@@ -4,12 +4,12 @@ from tests.test_models.test_base_model import test_basemodel
 from models.city import City
 
 
-class test_City(test_basemodel):
+class TestCity(unittest.TestCase):
     """ """
 
     def __init__(self, *args, **kwargs):
         """ """
-        super().__init__(*args, **kwargs)
+        super(TestCity, self).__init__(*args, **kwargs)
         self.name = "City"
         self.value = City
 

@@ -9,7 +9,7 @@ class test_review(test_basemodel):
 
     def __init__(self, *args, **kwargs):
         """ """
-        super().__init__(*args, **kwargs)
+        super(test_review, self).__init__(*args, **kwargs)
         self.name = "Review"
         self.value = Review
 
