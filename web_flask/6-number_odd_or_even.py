@@ -16,7 +16,7 @@ The default value of text is “is cool”
 H1 tag: “Number: n” inside the tag BODY
 /number_odd_or_even/<n>: display a HTML page only if n is an integer:
 H1 tag: “Number: n is even|odd” inside the tag BODY
-You must use the option strict_slashes=False in your route definition
+You must use the option strict_slashes=False in your route definition.
 """
 from flask import Flask, escape, render_template
 
@@ -40,12 +40,12 @@ def c_route(text):
 
 @app.route('/python/<text>', defaults={'text': 'Cool'}, strict_slashes=False)
 @app.route('/python/<text>', defaults={'text': 'Cool'}, strict_slashes=False)
-@app.route('/python/<text>', strict_slashes('_', ' '))
+@app.route('/python/<text>', strict_slashes=False)
 def p_route(text):
     return 'Python {}'.format(escape(text.replace('_', ' ')))
 
 
-@app.route('/number/<int:n', strict_slashes=False)
+@app.route('/number/<int:n>', strict_slashes=False)
 def n_route(n):
     return '{} is a number'.format(n)
 
