@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" State Module for HBNB project """
+"""State Module for HBNB project"""
 from models.base_model import BaseModel
 from sqlalchemy import String, Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
@@ -9,7 +9,7 @@ from models.city import City
 
 
 class State(BaseModel, Base):
-    """ State class """
+    """State class"""
     if models.storage_t == "db":
         __tablename__ = 'states'
         name = Column(String(128), nullable=False)
