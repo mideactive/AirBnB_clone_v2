@@ -25,7 +25,7 @@ class State(BaseModel, Base):
             city_list = []
             # Import the 'storage' object inside the method
             from models import storage
-            all_cities = storage.all(City)
+            all_cities = models.storage.all(City)
             for key, city in all_cities.items():
                 if city.state_id == self.id:
                     city_list.append(city)
