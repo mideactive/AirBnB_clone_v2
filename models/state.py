@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """State Module for HBNB project"""
-from models import storage
 from models.base_model import BaseModel, Base
 from models.city import City
 from sqlalchemy import String, Column, Integer, ForeignKey
@@ -24,6 +23,8 @@ class State(BaseModel, Base):
             state with the current instance
             """
             city_list = []
+            # Import the 'storage' object inside the method
+            from models import storage
             all_cities = storage.all(City)
             for key, city in all_cities.items():
                 if city.state_id == self.id:
