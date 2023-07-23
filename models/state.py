@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """State Module for HBNB project"""
+from models import storage
 from models.base_model import BaseModel, Base
 from models.city import City
 from sqlalchemy import String, Column, Integer, ForeignKey
@@ -23,7 +24,7 @@ class State(BaseModel, Base):
             state with the current instance
             """
             city_list = []
-            all_cities = models.storage.all(City)
+            all_cities = storage.all(City)
             for key, city in all_cities.items():
                 if city.state_id == self.id:
                     city_list.append(city)
