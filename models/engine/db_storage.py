@@ -45,7 +45,7 @@ class DBStorage():
                 for obj in objs:
                     key = obj.__class__.__name__ + '.' + obj.id
                     new_dict[key] = obj
-        return (new_dict)
+        return new_dict
 
     def new(self, obj):
         """ add the object to the current session.
@@ -64,14 +64,14 @@ class DBStorage():
             self.__session.delete(obj)
 
     def reload(self):
-        """ create all tables.
+        """ create all tables and create a new session.
         """
         Base.metadata.create_all(self.__engine)
         Session_fact = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(Session_fact)
-        self.__session = Session
+        self.__session = Session()
 
     def close(self):
-        """deserializing the JSON file to objects.
+        """close the current session.
         """
-        self.__session.remove()
+        self.__session.close()

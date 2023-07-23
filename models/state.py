@@ -1,25 +1,26 @@
 #!/usr/bin/python3
 """State Module for HBNB project"""
-from models.base_model import BaseModel
-from sqlalchemy import String, Column, Integer, ForeignKey
-from sqlalchemy.orm import relationship
-import models
 from models.base_model import BaseModel, Base
 from models.city import City
+from sqlalchemy import String, Column, Integer, ForeignKey
+from sqlalchemy.orm import relationship
+from os import getenv
 
 
 class State(BaseModel, Base):
     """State class"""
-    if models.storage_t == "db":
+    if getenv('HBNB_TYPE_STORAGE') == "db":
         __tablename__ = 'states'
         name = Column(String(128), nullable=False)
-        cities = relationship("City", backref='states')
+        cities = relationship("City", backref='state')
     else:
         name = ""
 
+    if getenv('HBNB_TYPE_STORAGE') != "db":
         @property
         def cities(self):
-            """getter for cityies with the same state with the current instance
+            """getter for cities with the same
+            state with the current instance
             """
             city_list = []
             all_cities = models.storage.all(City)
